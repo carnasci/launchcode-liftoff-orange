@@ -21,7 +21,7 @@ function Header() {
         {
             name:'HOME',
             icon:HiHome,
-            path:'/'
+            path:'/home'
         },
         {
             name:'PARK SEARCH',
