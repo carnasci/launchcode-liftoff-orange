@@ -41,4 +41,4 @@ out/
 /ReactFrontEnd/node_modules
 
 ### MISC ###
-#.env
+.env
