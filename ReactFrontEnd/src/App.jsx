@@ -6,6 +6,8 @@ import Home from './Components/Home';
 import Itinerary from './Components/Itinerary';
 import ParkSearch from './Components/ParkSearch';
 import Favorites from './Components/Favorites';
+import { Route } from 'react-router';
+import CreateReview from './Components/CreateReview';
 
 
 // ### ORIGINAL BEFORE ROUTER ###
@@ -14,11 +16,18 @@ import Favorites from './Components/Favorites';
 function App() {
   return (
     <>
-    <Header />
-    <Slideshow />
-    <h1>THIS IS THE HOME PAGE</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/createReview" element={<CreateReview />} />
+          <Route path="/parkSearch" element={<ParkSearch />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/itineraty" element={<Itinerary />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
-}
+};
 
 export default App
