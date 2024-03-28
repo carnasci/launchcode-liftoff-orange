@@ -18,27 +18,27 @@ function Header() {
     //more, "hero-icon 2" collection is used to start)
 
     const menu = [
-        {
-            name:'HOME',
-            icon:HiHome,
-            path:'/home'
-        },
-        {
-            name:'PARK SEARCH',
-            icon:HiMagnifyingGlass,
-            path:'/parksearch'
-        },
-        {
-            name:'FAVORITES',
-            icon:HiStar,
-            path:'/favorites'
-        },
-        {
-            name:'ITINERARY',
-            icon:HiPaperAirplane,
-            path:'/itinerary'
-        }
-    ]
+      {
+        name: "HOME",
+        icon: HiHome,
+        path: "/",
+      },
+      {
+        name: "PARK SEARCH",
+        icon: HiMagnifyingGlass,
+        path: "/parksearch",
+      },
+      {
+        name: "FAVORITES",
+        icon: HiStar,
+        path: "/favorites",
+      },
+      {
+        name: "ITINERARY",
+        icon: HiPaperAirplane,
+        path: "/itinerary",
+      },
+    ];
     return (
 
         <div className="flex items-center justify-center p-5">

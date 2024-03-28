@@ -7,6 +7,7 @@ import Itinerary from "./Components/Itinerary";
 import ParkSearch from "./Components/ParkSearch";
 import Favorites from "./Components/Favorites";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CreateReview from "./Components/CreateReview";
 
 // ### ORIGINAL BEFORE ROUTER ###
 // This page is being used as "home" page
@@ -21,6 +22,7 @@ function App() {
           <Route path="/parkSearch" element={<ParkSearch />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/itineraty" element={<Itinerary />} />
+          <Route path="/createreview" element={<CreateReview />} />
         </Routes>
       </BrowserRouter>
     </>
