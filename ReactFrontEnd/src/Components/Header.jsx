@@ -16,28 +16,28 @@ function Header() {
   //to icon import from react-icon repo (react-icons.github.io for
   //more, "hero-icon 2" collection is used to start)
 
-  // const menu = [
-  //   {
-  //     name: "HOME",
-  //     icon: HiHome,
-  //     path: "/home",
-  //   },
-  //   {
-  //     name: "PARK SEARCH",
-  //     icon: HiMagnifyingGlass,
-  //     path: "/parksearch",
-  //   },
-  //   {
-  //     name: "FAVORITES",
-  //     icon: HiStar,
-  //     path: "/favorites",
-  //   },
-  //   {
-  //     name: "ITINERARY",
-  //     icon: HiPaperAirplane,
-  //     path: "/itinerary",
-  //   },
-  // ];
+  const menu = [
+    {
+      name: "HOME",
+      icon: HiHome,
+      path: "/home",
+    },
+    {
+      name: "PARK SEARCH",
+      icon: HiMagnifyingGlass,
+      path: "/parksearch",
+    },
+    {
+      name: "FAVORITES",
+      icon: HiStar,
+      path: "/favorites",
+    },
+    {
+      name: "ITINERARY",
+      icon: HiPaperAirplane,
+      path: "/itinerary",
+    },
+  ];
   return (
     <div className="flex items-center justify-center p-5">
       <div className="flex gap-8 items-center">
@@ -54,7 +54,12 @@ function Header() {
                 is OVER 7## px wide  */}
         <div className="hidden md:flex gap-8">
           {menu.map((item) => (
-            <HeaderItem name={item.name} Icon={item.icon} path={item.path} />
+            <HeaderItem
+              key={item.name}
+              name={item.name}
+              Icon={item.icon}
+              path={item.path}
+            />
           ))}
         </div>
 
@@ -62,7 +67,12 @@ function Header() {
                 is UNDER 7## px wide */}
         <div className="flex md:hidden gap-5">
           {menu.map((item) => (
-            <HeaderItem name={item.name} Icon={item.icon} path={item.path} />
+            <HeaderItem
+              key={item.name}
+              name={item.name}
+              Icon={item.icon}
+              path={item.path}
+            />
           ))}
         </div>
 

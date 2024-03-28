@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import Header from "./Header";
 
 const CreateReview = () => {
   const [review, setReview] = useState({
@@ -36,6 +37,7 @@ const CreateReview = () => {
 
   return (
     <>
+      <Header />
       <div className="">
         <h1>Create a review for ?</h1>
       </div>

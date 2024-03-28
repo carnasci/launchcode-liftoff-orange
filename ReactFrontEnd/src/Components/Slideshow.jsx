@@ -21,30 +21,40 @@ function Slideshow() {
 
 
     return (
-        // ### PREVIOUS SLIDE SHOW ITERATION ###
-        // <div className="flex overflow-x-auto  w-full px-10 py-2 ">       
-        //     {picList.map((item,index)=>(
-                
-        //         <img src={item.fileInfo.url} 
-        //         className="min-w-full h-[310px] object-cover object-left-top mr-5 rounded-sm"/>
-        //     ))}
-        // 
-        // </div>
-        //### END OF OLD SLIDE SHOW ###
+      // ### PREVIOUS SLIDE SHOW ITERATION ###
+      // <div className="flex overflow-x-auto  w-full px-10 py-2 ">
+      //     {picList.map((item,index)=>(
 
-        //this div renders slide show using images from "picList". Interval can be changed 
-        //by altering 'slideInterval'. Prev/next image buttons are hidden with leftControl
-        //and rightControl set to non-breaking space...delete those props to make them visible
-        <>
+      //         <img src={item.fileInfo.url}
+      //         className="min-w-full h-[310px] object-cover object-left-top mr-5 rounded-sm"/>
+      //     ))}
+      //
+      // </div>
+      //### END OF OLD SLIDE SHOW ###
+
+      //this div renders slide show using images from "picList". Interval can be changed
+      //by altering 'slideInterval'. Prev/next image buttons are hidden with leftControl
+      //and rightControl set to non-breaking space...delete those props to make them visible
+      <>
         <div className="h-80 px-5 py-2">
-            <Carousel slideInterval={5000} indicators={false} pauseOnHover leftControl="&nbsp;" rightControl="&nbsp;">
-                {picList.map((item) => (
-                    <img src={item.fileInfo.url} className="min-w-full"/>
-                ))}
-            </Carousel>
+          <Carousel
+            slideInterval={5000}
+            indicators={false}
+            pauseOnHover
+            leftControl="&nbsp;"
+            rightControl="&nbsp;"
+          >
+            {picList.map((item) => (
+              <img
+                key={item.fileInfo.id}
+                src={item.fileInfo.url}
+                className="min-w-full"
+              />
+            ))}
+          </Carousel>
         </div>
-        </>
-    )
+      </>
+    );
 }
 
 export default Slideshow
