@@ -46,7 +46,7 @@ function Slideshow() {
           >
             {picList.map((item) => (
               <img
-                key={item.fileInfo.id}
+                key={item.fileInfo.url}
                 src={item.fileInfo.url}
                 className="min-w-full"
               />
