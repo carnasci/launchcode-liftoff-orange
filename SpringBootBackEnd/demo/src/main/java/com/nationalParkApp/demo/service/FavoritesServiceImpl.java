@@ -7,6 +7,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class FavoritesServiceImpl implements FavoritesService {
 
@@ -20,6 +23,24 @@ public class FavoritesServiceImpl implements FavoritesService {
 
         BeanUtils.copyProperties(favorites, favoritesEntity);
         favoritesRepository.save(favoritesEntity);
+        return favorites;
+    }
+
+    @Override
+    public boolean deleteFromFavorites(Long id) {
+        FavoritesEntity favorite = favoritesRepository.findById(id).get();
+        favoritesRepository.delete(favorite);
+        return false;
+    }
+
+    @Override
+    public List<Favorites> getAllFavorites() {
+        List<FavoritesEntity> favoritesEntities = favoritesRepository.findAll();
+
+        List<Favorites> favorites = favoritesEntities.stream().map(fav -> new Favorites(
+                fav.getId(),
+                fav.getParkCode()))
+                .collect(Collectors.toList());
         return favorites;
     }
 }
