@@ -8,17 +8,14 @@ import {useQuery, useQueryClient} from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import FavoritesServices from '../Services/FavoritesServices';
 
 const getParkInfoURL="https://developer.nps.gov/api/v1/parks?parkCode="
 const api_key=import.meta.env.VITE_REACT_APP_NPS_API_KEY;
 
 function ParkDetails() {
     const [singlePark, setPark] = useState([]);
-    const [favorites, setFavorites] = useState({
-        id: "",
-        userId: "",
-        parkCode: "",
-    });
+    
     const { parkCode } =  useParams();
     // const { searches } = useGlobalContext();
     const mapRef = useRef(null);
@@ -79,6 +76,12 @@ function ParkDetails() {
 
     //initialize single park object
     const parkInfo = data.data[0];
+
+    const [favorites, setFavorites] = useState({
+        id: "",
+        userId: "",
+        parkCode: parkInfo.parkCode,
+    });
 
     //intialize lat/long from Park (not "addresses")
     const latlong =[Number(parkInfo.latitude), Number(parkInfo.longitude)]
@@ -145,6 +148,27 @@ function ParkDetails() {
         )
     }
 
+    
+
+    const addToFavorites = (e) => {
+        e.preventDefault();
+        FavoritesServices.AddToFavorites(favorites)
+        .then((response) => {
+            console.log(response)
+        })
+        .catch((error) => {
+            console.log(error)
+        });
+    };
+
+    const handleClick = (e) => {
+        const value = e.target.value;
+        setFavorites({...favorites, [e.target.name]: value });
+        addToFavorites(favorites);
+        document.getElementById("favorite").innerHTML = "Favorite";
+        className="bg-yellow-300 rounded-3xl border-double";
+    }
+
     return (
     <>
     <Header />
@@ -189,7 +213,8 @@ function ParkDetails() {
         </div>
         
         <div name="button group" className="flex justify-evenly">
-            <button className="bg-yellow-300 rounded-3xl">Add to favorites</button>
+            <button id='favorite' className="bg-yellow-300 rounded-3xl" 
+                onClick={handleClick}>Add to favorites</button>
             <Link to = "/createreview"><button className="bg-yellow-300 rounded-3xl">Review</button></Link>
             <Link to = "/itinerary"><button className=" bg-yellow-300 rounded-3xl">Create Itinereary</button></Link>
         </div>

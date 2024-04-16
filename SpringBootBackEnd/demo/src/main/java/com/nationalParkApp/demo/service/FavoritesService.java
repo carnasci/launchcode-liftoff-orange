@@ -13,4 +13,6 @@ public interface FavoritesService {
     boolean deleteFromFavorites(Long id);
 
     List<Favorites> getAllFavorites();
+
+    boolean getFavoritesById(Long id);
 }
