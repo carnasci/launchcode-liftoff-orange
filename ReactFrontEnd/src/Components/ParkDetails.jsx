@@ -12,6 +12,11 @@ const api_key=import.meta.env.VITE_REACT_APP_NPS_API_KEY;
 
 function ParkDetails() {
     const [singlePark, setPark] = useState([]);
+    const [favorites, setFavorites] = useState({
+        id: "",
+        userId: "",
+        parkCode: "",
+    });
     const { parkCode } =  useParams();
     // const { searches } = useGlobalContext();
 
