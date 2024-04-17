@@ -1,11 +1,20 @@
 import axios from "axios";
 
-const ITINERARY_API_BASE_URL = "http://localhost:8080/api/v1/itinerary";
+const FAVORITES_API_BASE_URL = "http://localhost:8080/api/v1/favorites";
+
+const FAVORITES_API_LIST_URL = "http://localhost:8080/api/v1/listFavorites";
+
+
 
 class FavoritesService {
 
-    AddToFavorites(favorites) {
-        return axios.post(ITINERARY_API_BASE_URL, favorites);
+
+    addToFavorites(favorites) {
+        return axios.post(FAVORITES_API_BASE_URL, favorites);
+    }
+
+    getFavorites() {
+        return axios.get(FAVORITES_API_LIST_URL);     
     }
 }
 

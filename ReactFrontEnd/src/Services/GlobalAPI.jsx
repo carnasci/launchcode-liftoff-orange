@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
 
 const parkBaseURL="https://developer.nps.gov/api/v1"
 const getParkInfoURL="https://developer.nps.gov/api/v1/parks?parkCode="

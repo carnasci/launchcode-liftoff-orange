@@ -2,10 +2,8 @@
 
 import React from 'react'
 import logo from '../assets/Images/NPS-Logo.png'
-import {HiHome, HiMagnifyingGlass,HiStar,HiPaperAirplane,HiBars3} from "react-icons/hi2";
+import {HiHome, HiMagnifyingGlass,HiStar,HiPaperAirplane} from "react-icons/hi2";
 import {HiUser} from "react-icons/hi2";
-import {HiPlus,HiDotsVertical} from "react-icons/hi";
-import { list } from 'postcss';
 import HeaderItem from './HeaderItem';
 
 

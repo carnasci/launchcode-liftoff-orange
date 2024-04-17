@@ -1,27 +1,44 @@
+/* eslint-disable */
+
 import React, { useEffect, useState, useRef } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
-import axios from 'axios';
+import { useParams } from 'react-router-dom'
 import Header from './Header';
-import { useGlobalContext } from '../context';
 import { Carousel } from 'flowbite-react';
-import {useQuery, useQueryClient} from '@tanstack/react-query';
+import {useQuery} from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import FavoritesServices from '../Services/FavoritesServices';
 
-const getParkInfoURL="https://developer.nps.gov/api/v1/parks?parkCode="
-const api_key=import.meta.env.VITE_REACT_APP_NPS_API_KEY;
+//const getParkInfoURL="https://developer.nps.gov/api/v1/parks?parkCode="
+//const api_key=import.meta.env.VITE_REACT_APP_NPS_API_KEY;
 
 function ParkDetails() {
-    const [singlePark, setPark] = useState([]);
-    
-    const { parkCode } =  useParams();
+    //const [singlePark, setPark] = useState([]);
+    const [toggle, setToggle] = useState(false);
+    //const { parkCode } =  useParams();
     // const { searches } = useGlobalContext();
     const mapRef = useRef(null);
 
     //this sets parkId equal to the parkcode at then end of the current url
     const parkId = useParams().parkcode;
+
+    useEffect(() => {
+        FavoritesServices.getFavorites().then((response) => {
+            console.log(response);
+            const parkCodes = response.data
+            console.log(parkCodes);
+            //.data.map(res => res.parkCode);
+            if (parkCodes.includes(parkId)) {setToggle(true)}
+            setFavorites({...favorites, parkCode: parkId });
+        });
+    }, );
+
+    const [favorites, setFavorites] = useState({
+        id: "",
+        //userId: "",
+        parkCode: parkId,
+    });
 
     // //below uses react query to make an API call, which is then accessible to review & itinerary pages via (['singlePark'])
     const { data, error, isLoading, status } = useQuery({
@@ -32,7 +49,7 @@ function ParkDetails() {
 
     });
     
-    if (error) return <div>There was an error</div>;
+    if (error) return <div>There was an error</div>
     if (isLoading) return <div>DATA IS LOADING...</div>
 
 //#############################
@@ -77,11 +94,7 @@ function ParkDetails() {
     //initialize single park object
     const parkInfo = data.data[0];
 
-    const [favorites, setFavorites] = useState({
-        id: "",
-        userId: "",
-        parkCode: parkInfo.parkCode,
-    });
+    
 
     //intialize lat/long from Park (not "addresses")
     const latlong =[Number(parkInfo.latitude), Number(parkInfo.longitude)]
@@ -150,24 +163,41 @@ function ParkDetails() {
 
     
 
-    const addToFavorites = (e) => {
-        e.preventDefault();
-        FavoritesServices.AddToFavorites(favorites)
-        .then((response) => {
-            console.log(response)
-        })
-        .catch((error) => {
-            console.log(error)
-        });
-    };
-
-    const handleClick = (e) => {
-        const value = e.target.value;
-        setFavorites({...favorites, [e.target.name]: value });
-        addToFavorites(favorites);
-        document.getElementById("favorite").innerHTML = "Favorite";
-        className="bg-yellow-300 rounded-3xl border-double";
+    function addToFavorites() {
+        FavoritesServices.addToFavorites(favorites)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
+
+    // const [faveList, setFaveList] = useState([]);
+
+    
+
+    // const getFaveList = () => {
+    //     FavoritesServices.getFavorites.then((response) => {
+    //         const parkCodes = response.data.map(res => res.parkCode);
+    //         setFaveList(parkCodes);
+    //         if (parkCode.includes(parkId)) {setToggle(true)};
+    //     });
+    // };
+
+    
+
+    
+
+
+    // const handleClick = (e) => {
+        
+    //     setFavorites({...favorites, parkCode: parkId });
+    //     if (faveList.includes(parkId)) {}
+    //     addToFavorites(favorites);
+    //     document.getElementById("favorite").innerHTML = "Favorite";
+    //     className="bg-yellow-300 rounded-3xl border-double";
+    // }
 
     return (
     <>
@@ -189,7 +219,7 @@ function ParkDetails() {
             <Carousel slide={false} className="">
                 {parkInfo.images.map((image, idx) => (
                 <img key={idx} src={image.url} className=""/>
-                ))}
+                ))};
             </Carousel>
         </div>    
         
@@ -213,8 +243,15 @@ function ParkDetails() {
         </div>
         
         <div name="button group" className="flex justify-evenly">
-            <button id='favorite' className="bg-yellow-300 rounded-3xl" 
-                onClick={handleClick}>Add to favorites</button>
+            {toggle?
+            <button className="bg-yellow-500 rounded-3xl" 
+                onClick=''>Favorited</button>
+            :
+            <button className="bg-yellow-300 rounded-3xl" 
+                onClick={addToFavorites}>Add to favorites</button>
+            }
+
+
             <Link to = "/createreview"><button className="bg-yellow-300 rounded-3xl">Review</button></Link>
             <Link to = "/itinerary"><button className=" bg-yellow-300 rounded-3xl">Create Itinereary</button></Link>
         </div>

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useEffect, useState } from 'react'
 import GlobalAPI from '../Services/GlobalAPI'
 import { Carousel } from "flowbite-react"

@@ -1,7 +1,7 @@
+/* eslint-disable */
+
 import React, { useState, useContext, useEffect } from "react";
 import { useCallback } from "react";
-import { useQuery } from '@tanstack/react-query'
-import axios from "axios";
 
 const URL = "https://developer.nps.gov/api/v1";
 const api_key="Wrk46hd2qqrRis6VpJA8CT12EeDczzGa9dYRBjYk"

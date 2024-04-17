@@ -1,8 +1,7 @@
+/* eslint-disable */
+
 import React from 'react'
-import { useState } from 'react'
 import './App.css'
-import Header from './Components/Header'
-import Slideshow from './Components/Slideshow'
 import Home from './Components/Home';
 import Itinerary from './Components/Itinerary';
 import ParkSearch from './Components/ParkSearch';
