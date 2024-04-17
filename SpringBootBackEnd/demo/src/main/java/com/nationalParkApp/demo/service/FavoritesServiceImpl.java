@@ -45,10 +45,10 @@ public class FavoritesServiceImpl implements FavoritesService {
     }
 
     @Override
-    public boolean getFavoritesById(Long id) {
+    public Favorites getFavoritesById(Long id) {
         FavoritesEntity favoritesEntity = favoritesRepository.findById(id).get();
         Favorites favorites = new Favorites();
         BeanUtils.copyProperties(favoritesEntity, favorites);
-        return true;
+        return favorites;
     }
 }

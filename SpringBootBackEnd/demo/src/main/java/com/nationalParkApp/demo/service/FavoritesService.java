@@ -14,5 +14,5 @@ public interface FavoritesService {
 
     List<Favorites> getAllFavorites();
 
-    boolean getFavoritesById(Long id);
+    Favorites getFavoritesById(Long id);
 }

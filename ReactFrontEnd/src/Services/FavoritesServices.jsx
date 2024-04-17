@@ -2,7 +2,7 @@ import axios from "axios";
 
 const FAVORITES_API_BASE_URL = "http://localhost:8080/api/v1/favorites";
 
-const FAVORITES_API_LIST_URL = "http://localhost:8080/api/v1/listFavorites";
+const FAVORITES_API_LIST_URL = "http://localhost:8080/api/v1/favorites";
 
 
 

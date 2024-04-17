@@ -16,21 +16,30 @@ import FavoritesServices from '../Services/FavoritesServices';
 function ParkDetails() {
     //const [singlePark, setPark] = useState([]);
     const [toggle, setToggle] = useState(false);
-    //const { parkCode } =  useParams();
+    const { parkCode } =  useParams();
     // const { searches } = useGlobalContext();
     const mapRef = useRef(null);
 
     //this sets parkId equal to the parkcode at then end of the current url
     const parkId = useParams().parkcode;
+    const parkCodes = [];
 
     useEffect(() => {
         FavoritesServices.getFavorites().then((response) => {
             console.log(response);
-            const parkCodes = response.data
-            console.log(parkCodes);
-            //.data.map(res => res.parkCode);
+            const parkObjsRes = response.data
+            parkObjsRes.map(res => res.parkCode);
+            console.log(parkObjsRes);
+            
+            let i = 0;
+            while (parkObjsRes.length > i) {
+                parkCodes.push(parkObjsRes[i].parkCode)
+                i++;
+            } console.log(parkCodes);
+
             if (parkCodes.includes(parkId)) {setToggle(true)}
             setFavorites({...favorites, parkCode: parkId });
+            console.log(favorites);
         });
     }, );
 
@@ -215,7 +224,7 @@ function ParkDetails() {
             </div>
         </div>
 
-        <div name="images" className=" h-svh">
+        <div name="images" className="h-svh">
             <Carousel slide={false} className="">
                 {parkInfo.images.map((image, idx) => (
                 <img key={idx} src={image.url} className=""/>

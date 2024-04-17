@@ -17,13 +17,11 @@ public class FavoritesController {
 
     public FavoritesController(FavoritesService favoritesService) { this.favoritesService =favoritesService; }
 
-    @GetMapping("/favorites")
-    public boolean getFavoritesById(@RequestBody Long id) {
-        if (favoritesService.getFavoritesById(id)) {
-            return true;
-        } else {
-            return false;
-        }
+    @GetMapping("/favorites/{id}")
+    public ResponseEntity<Favorites> getFavoritesById(@PathVariable Long id) {
+        Favorites favorites = null;
+        favorites = favoritesService.getFavoritesById(id);
+        return ResponseEntity.ok(favorites);
     }
 
     @PostMapping("/favorites")
@@ -31,12 +29,12 @@ public class FavoritesController {
         return favoritesService.addToFavorites(favorites);
     }
 
-    @GetMapping("/listFavorites")
+    @GetMapping("/favorites")
     public List<Favorites> getAllFavorites() {
         return favoritesService.getAllFavorites();
     }
 
-    @DeleteMapping("/deleteFavorites")
+    @DeleteMapping("/favorites")
     public ResponseEntity<Object> deleteFavorite(@RequestBody Long id) {
         boolean deleted = false;
         deleted = favoritesService.deleteFromFavorites(id);
