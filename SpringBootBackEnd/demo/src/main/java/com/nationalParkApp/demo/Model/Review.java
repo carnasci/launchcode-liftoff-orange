@@ -11,4 +11,5 @@ public class Review {
     private long id;
     private String parkCode;
     private String content;
+    private User user;
 }

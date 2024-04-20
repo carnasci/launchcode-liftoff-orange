@@ -14,4 +14,5 @@ public class Itinerary {
     private Date startDate;
     private Date endDate;
     private String parkCode;
+    private User user;
 }

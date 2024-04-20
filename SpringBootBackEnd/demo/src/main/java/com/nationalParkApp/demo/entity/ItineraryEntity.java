@@ -14,8 +14,11 @@ public class ItineraryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private Date startDate;
+
     private Date endDate;
+
     private String parkCode;
 
     @ManyToOne
