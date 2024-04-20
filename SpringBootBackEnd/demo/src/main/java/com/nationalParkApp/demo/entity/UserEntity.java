@@ -1,5 +1,6 @@
 package com.nationalParkApp.demo.entity;
 
+import com.nationalParkApp.demo.Model.Favorites;
 import com.nationalParkApp.demo.Model.Itinerary;
 import com.nationalParkApp.demo.Model.Review;
 import jakarta.persistence.*;
@@ -21,8 +22,13 @@ public class UserEntity {
 
     private String password;
 
+    @OneToMany(mappedBy = "itinerary", cascade = CascadeType.ALL)
     private List<Itinerary> itineraries;
 
+    @OneToMany(mappedBy = "review", cascade = CascadeType.ALL)
     private List<Review> reviews;
+
+    @OneToMany(mappedBy = "favorites", cascade = CascadeType.ALL)
+    private List<Favorites> favorites;
 
 }

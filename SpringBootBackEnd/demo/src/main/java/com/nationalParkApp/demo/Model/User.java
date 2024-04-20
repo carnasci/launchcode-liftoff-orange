@@ -17,6 +17,7 @@ public class User {
     private String password;
     private List<Itinerary> itineraries;
     private List<Review> reviews;
+    private List<Favorites> favorites;
 
 
 }
