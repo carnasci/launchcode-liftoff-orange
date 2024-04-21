@@ -34,6 +34,10 @@ public class FavoritesController {
         return favoritesService.getAllFavorites();
     }
 
+    @GetMapping("/user/favorites")
+    public List<Favorites> getAllFavoritesByUserId(@RequestBody Long id) {
+        return favoritesService.getAllByUserId(id);
+    }
     @DeleteMapping("/favorites")
     public ResponseEntity<Object> deleteFavorite(@RequestBody Long id) {
         boolean deleted = false;

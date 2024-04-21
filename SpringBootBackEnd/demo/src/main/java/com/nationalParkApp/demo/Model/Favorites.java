@@ -11,4 +11,5 @@ public class Favorites {
 
     private long id;
     private String parkCode;
+    private User user;
 }

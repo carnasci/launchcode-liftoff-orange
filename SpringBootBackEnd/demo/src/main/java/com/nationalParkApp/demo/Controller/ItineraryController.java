@@ -23,8 +23,8 @@ public class ItineraryController {
     @PostMapping("/itinerary")
     public Itinerary createItinerary(@RequestBody Itinerary itinerary) { return itineraryService.createItinerary(itinerary); }
 
-    @DeleteMapping(path = "/itinerary/{id}")
-    public ResponseEntity<Object> deleteItinerary(@PathVariable Long id) {
+    @DeleteMapping(path = "/user")
+    public ResponseEntity<Object> deleteItinerary(@RequestBody Long id) {
         boolean deleted = false;
         deleted = itineraryService.deleteItinerary(id);
         Map<String, Boolean> response = new HashMap<>();
@@ -37,8 +37,8 @@ public class ItineraryController {
         return itineraryService.getAllItinerariesByParkCode(parkCode);
     }
 
-    @GetMapping(path = "/itinerary/user/{id}")
-    public List<Itinerary> getAllItinerariesByUserId(@PathVariable Long id) {
+    @GetMapping(path = "/user")
+    public List<Itinerary> getAllItinerariesByUserId(@RequestBody Long id) {
         return itineraryService.getAllItinerariesByUserId(id);
     }
 }

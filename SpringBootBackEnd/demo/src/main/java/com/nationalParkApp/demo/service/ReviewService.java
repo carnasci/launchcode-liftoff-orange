@@ -11,6 +11,8 @@ public interface ReviewService {
 
     List<Review> getAllReviewsByParkCode(String parkCode);
 
+    List<Review> getAllReviewsByUserId(Long id);
+
     boolean deleteReview(Long id);
 
     Review getReviewById();

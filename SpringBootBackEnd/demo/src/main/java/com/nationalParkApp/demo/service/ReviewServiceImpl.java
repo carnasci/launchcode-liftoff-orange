@@ -54,6 +54,19 @@ public class ReviewServiceImpl implements ReviewService{
     }
 
     @Override
+    public List<Review> getAllReviewsByUserId(Long id) {
+        List<ReviewEntity> reviewEntities = reviewRepository.findByUserId(id);
+
+        List<Review> reviews = reviewEntities.stream().map(rev -> new Review(
+                rev.getId(),
+                rev.getContent(),
+                rev.getParkCode(),
+                rev.getUser()))
+                .collect(Collectors.toList());
+        return reviews;
+    }
+
+    @Override
     public boolean deleteReview(Long id) {
         ReviewEntity review = reviewRepository.findById(id).get();
         reviewRepository.delete(review);

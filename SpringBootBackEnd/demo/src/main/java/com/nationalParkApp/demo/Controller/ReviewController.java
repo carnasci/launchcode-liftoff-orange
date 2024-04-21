@@ -29,6 +29,11 @@ public class ReviewController {
         return reviewService.getAllReviews();
     }
 
+    @GetMapping("/user")
+    public List<Review> getAllReviewsByUserId(@RequestBody Long id) {
+        return reviewService.getAllReviewsByUserId(id);
+    }
+
     @DeleteMapping(path = "/editreview/{id}")
     public ResponseEntity<Object> deleteReview(@PathVariable Long id) {
         boolean deleted = false;
