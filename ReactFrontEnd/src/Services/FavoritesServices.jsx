@@ -1,21 +1,16 @@
+import React from "react";
 import axios from "axios";
 
-const FAVORITES_API_BASE_URL = "http://localhost:8080/api/v1/favorites";
+const FAVORITES_BASE_API_URL = "http://localhost:8080/api/v1/favorites";
 
-const FAVORITES_API_LIST_URL = "http://localhost:8080/api/v1/favorites";
+class FavoritesServices {
+  createFavorite(favorites) {
+    return axios.post(FAVORITES_BASE_API_URL);
+  }
 
-
-
-class FavoritesService {
-
-
-    addToFavorites(favorites) {
-        return axios.post(FAVORITES_API_BASE_URL, favorites);
-    }
-
-    getFavorites() {
-        return axios.get(FAVORITES_API_LIST_URL);     
-    }
+  getFavoritesByUserId(id) {
+    return axios.get(FAVORITES_BASE_API_URL + "/" + "user", id);
+  }
 }
 
-export default new FavoritesService();
+export default new FavoritesServices();

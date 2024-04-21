@@ -34,7 +34,7 @@ public class FavoritesController {
         return favoritesService.getAllFavorites();
     }
 
-    @GetMapping("/user/favorites")
+    @GetMapping("/favorites/user")
     public List<Favorites> getAllFavoritesByUserId(@RequestBody Long id) {
         return favoritesService.getAllByUserId(id);
     }

@@ -19,7 +19,7 @@ public class ReviewController {
         this.reviewService = reviewService;
     }
 
-    @PostMapping("/createreview")
+    @PostMapping("/review")
     public Review createReview(@RequestBody Review review) {
         return reviewService.createReview(review);
     }
@@ -29,12 +29,12 @@ public class ReviewController {
         return reviewService.getAllReviews();
     }
 
-    @GetMapping("/user")
+    @GetMapping("/review/user")
     public List<Review> getAllReviewsByUserId(@RequestBody Long id) {
         return reviewService.getAllReviewsByUserId(id);
     }
 
-    @DeleteMapping(path = "/editreview/{id}")
+    @DeleteMapping(path = "/review/{id}")
     public ResponseEntity<Object> deleteReview(@PathVariable Long id) {
         boolean deleted = false;
         deleted = reviewService.deleteReview(id);

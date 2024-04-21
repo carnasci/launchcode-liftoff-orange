@@ -16,7 +16,7 @@ class ItineraryServie {
   }
 
   getItinerariesByUserId(id) {
-    return axios.get(ITINERARY_API_BASE_URL + "/" + id);
+    return axios.get(ITINERARY_API_BASE_URL, id);
   }
 }
 

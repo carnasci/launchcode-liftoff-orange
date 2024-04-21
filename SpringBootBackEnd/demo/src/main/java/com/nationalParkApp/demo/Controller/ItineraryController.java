@@ -37,7 +37,7 @@ public class ItineraryController {
         return itineraryService.getAllItinerariesByParkCode(parkCode);
     }
 
-    @GetMapping(path = "/user")
+    @GetMapping(path = "/user2")
     public List<Itinerary> getAllItinerariesByUserId(@RequestBody Long id) {
         return itineraryService.getAllItinerariesByUserId(id);
     }
