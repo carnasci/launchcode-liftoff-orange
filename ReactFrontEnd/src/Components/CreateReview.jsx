@@ -13,35 +13,41 @@ const CreateReview = () => {
   //breaks down JSON into single park object
   const parkDetails = singlePark.data[0]
 
+  const user = {
+    id: 2,
+    username: "paulUser",
+    password: "userPaul",
+  };
+
   const [review, setReview] = useState({
     id: "",
     parkCode: parkDetails.parkCode,
     content: "",
+    user: user,
   });
-  
 
   //confirms above declarations in console // remove if not needed for testing
-  console.log("HERE IS THE REACT QUERY CACHED DATA FROM PARK DETAILS")
-  console.log(singlePark)
-  console.log(parkDetails)
+  console.log("HERE IS THE REACT QUERY CACHED DATA FROM PARK DETAILS");
+  console.log(singlePark);
+  console.log(parkDetails);
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const value = e.target.value;
-    setReview({ ...review, [e.target.name]: value });
+    setReview({ ...review, content: value });
   };
 
   const saveReview = (e) => {
     e.preventDefault();
     ReviewServices.createReview(review)
       .then((response) => {
-        console.log(response)
-        navigate("/home")
+        console.log(response);
+        //navigate("/home");
       })
       .catch((error) => {
-        console.log(error)
-      });  
+        console.log(error);
+      });
   };
 
   const reset = (e) => {
@@ -50,6 +56,7 @@ const CreateReview = () => {
       id: "",
       parkCode: parkDetails.parkCode,
       content: "",
+      userId: user,
     });
   };
 

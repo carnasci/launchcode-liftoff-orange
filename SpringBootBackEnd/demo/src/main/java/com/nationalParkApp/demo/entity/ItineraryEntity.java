@@ -22,6 +22,9 @@ public class ItineraryEntity {
     private String parkCode;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinTable(name = "user_itineraries",
+            joinColumns = @JoinColumn(name = "itinerary_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private UserEntity user;
 }

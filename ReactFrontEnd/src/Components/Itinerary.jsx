@@ -23,41 +23,48 @@ const [startDate, setStartDate] = useState(new Date());
 
 const [endDate, setEndDate] = useState(new Date());
 
+const user = {
+  id: 2,
+  username: "paulUser",
+  password: "userPaul",
+};
+
 const [itinerary, setItinerary] = useState({
   id: "",
   startDate: new Date(),
   endDate: new Date(),
   parkCode: parkDetails.parkCode,
+  user: user,
 });
 
 const navigate = useNavigate();
 
 const handleChange = (name, date) => {
-  
-  setItinerary({...itinerary, [name]: date})
+  setItinerary({ ...itinerary, [name]: date });
 };
 
 const saveItinerary = (e) => {
+  setItinerary({ ...itinerary, user: user });
   e.preventDefault();
   ItineraryServices.CreateItinerary(itinerary)
     .then((response) => {
-      console.log(response)
-      navigate("/home")
+      console.log(response);
+      //navigate("/home")
     })
     .catch((error) => {
-      console.log(error)
+      console.log(error);
     });
-  };
+};
 
-  const reset = (e) => {
-    e.preventDefault();
-    setItinerary({
-      id: "",
-      startDate: new Date(),
-      endDate: new Date(),
-      parkCode: "",
-    });
-  };
+const reset = (e) => {
+  e.preventDefault();
+  setItinerary({
+    id: "",
+    startDate: new Date(),
+    endDate: new Date(),
+    parkCode: user,
+  });
+};
   
   return (
     <>

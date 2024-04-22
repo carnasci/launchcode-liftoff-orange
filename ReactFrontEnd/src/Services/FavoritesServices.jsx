@@ -5,7 +5,11 @@ const FAVORITES_BASE_API_URL = "http://localhost:8080/api/v1/favorites";
 
 class FavoritesServices {
   createFavorite(favorites) {
-    return axios.post(FAVORITES_BASE_API_URL);
+    return axios.post(FAVORITES_BASE_API_URL, favorites);
+  }
+
+  getFavorites() {
+    return axios.get(FAVORITES_BASE_API_URL);
   }
 
   getFavoritesByUserId(id) {

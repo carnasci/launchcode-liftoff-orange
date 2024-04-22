@@ -15,6 +15,9 @@ public class FavoritesEntity {
     private String parkCode;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinTable(name = "user_favorites",
+    joinColumns = @JoinColumn(name = "favorites_id"),
+    inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private UserEntity user;
 }

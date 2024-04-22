@@ -18,7 +18,10 @@ public class ReviewEntity {
     private String content;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinTable(name = "user_reviews",
+            joinColumns = @JoinColumn(name = "review_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private UserEntity user;
 
 }

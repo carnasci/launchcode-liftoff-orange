@@ -1,5 +1,6 @@
 package com.nationalParkApp.demo.Model;
 
+import com.nationalParkApp.demo.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,5 +12,5 @@ public class Favorites {
 
     private long id;
     private String parkCode;
-    private User user;
+    private UserEntity user;
 }

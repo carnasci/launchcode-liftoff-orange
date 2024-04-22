@@ -24,10 +24,16 @@ function ParkDetails() {
     //this sets parkId equal to the parkcode at then end of the current url
     const parkId = useParams().parkcode;
 
+    const user = {
+      id: 2,
+      username: "paulUser",
+      password: "userPaul",
+    };
+
     const [favorites, setFavorites] = useState({
       id: "",
-      //userId: "",
       parkCode: parkId,
+      user: user,
     });
 
     useEffect(() => {
@@ -50,9 +56,9 @@ function ParkDetails() {
     }, []);
 
     const saveToFavorites = () => {
-      setFavorites({ ...favorites, parkCode: parkId });
+      setFavorites({ ...favorites, parkCode: parkId, user: user });
       setToggle(true);
-      FavoritesServices.addToFavorites(favorites)
+      FavoritesServices.createFavorite(favorites)
         .then((response) => {
           console.log(response);
         })

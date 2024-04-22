@@ -6,6 +6,7 @@ import com.nationalParkApp.demo.Model.Review;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,13 +23,13 @@ public class UserEntity {
 
     private String password;
 
-    @OneToMany(mappedBy = "itinerary", cascade = CascadeType.ALL)
-    private List<Itinerary> itineraries;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<ItineraryEntity> itineraries;
 
-    @OneToMany(mappedBy = "review", cascade = CascadeType.ALL)
-    private List<Review> reviews;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<ReviewEntity> reviews;
 
-    @OneToMany(mappedBy = "favorites", cascade = CascadeType.ALL)
-    private List<Favorites> favorites;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<FavoritesEntity> favorites;
 
 }

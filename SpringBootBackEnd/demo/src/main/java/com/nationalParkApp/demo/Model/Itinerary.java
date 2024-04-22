@@ -1,5 +1,6 @@
 package com.nationalParkApp.demo.Model;
 
+import com.nationalParkApp.demo.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,5 +15,5 @@ public class Itinerary {
     private Date startDate;
     private Date endDate;
     private String parkCode;
-    private User user;
+    private UserEntity user;
 }
