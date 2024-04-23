@@ -38,44 +38,64 @@ function ParkDetails() {
     user: user,
   });
 
+  let faveParkCodes = [];
+
   useEffect(() => {
-    const getParkCodes = async () => {
-      const mappedParkCodes = [];
-
-      FavoritesServices.getFavoritesByUserId(2).then((response) => {
+    async function getFaveParkCodes() {
+      try {
+        const response = await FavoritesServices.getFavoritesByUserId(2);
         response.data.map((data) => {
-          mappedParkCodes.push(data.parkCode);
+          faveParkCodes.push(data.parkCode);
         });
-        console.log(mappedParkCodes);
-        //setParkCodes(mappedParkCodes);
-        if (mappedParkCodes.includes(parkId)) {
-          setToggle(true);
-        }
-      });
-      //try {
-      // const response = await FavoritesServices.getFavoritesByUserId(2);
+      } catch (error) {
+        console.log(error);
+      }
+      if (faveParkCodes.includes(parkId)) {
+        setToggle(true);
+      }
+    }
+    getFaveParkCodes();
+    console.log(faveParkCodes);
+  });
 
-      // console.log(response.data);
+  //   useEffect(() => {
+  //     const getParkCodes = async () => {
+  //       const mappedParkCodes = [];
 
-      // response.data.map((data) => {
-      //   mappedParkCodes.push(data.parkCode);
-      //   setParkCodes(mappedParkCodes);
+  //       FavoritesServices.getFavoritesByUserId(2).then((response) => {
+  //         response.data.map((data) => {
+  //           mappedParkCodes.push(data.parkCode);
+  //         });
+  //         console.log(mappedParkCodes);
 
-      //   if (parkCodes.includes(parkId)) {
-      //     setToggle(true);
-      //   }
-      //});
+  //         if (mappedParkCodes.includes(parkId)) {
+  //           setToggle(true);
+  //         }
+  //       });
+  //try {
+  // const response = await FavoritesServices.getFavoritesByUserId(2);
 
-      //     console.log(mappedParkCodes);
-      //   } catch {
-      //     console.log(error);
-      //   }
-    };
+  // console.log(response.data);
 
-    getParkCodes();
+  // response.data.map((data) => {
+  //   mappedParkCodes.push(data.parkCode);
+  //   setParkCodes(mappedParkCodes);
 
-    //console.log(parkCodes);
-  }, []);
+  //   if (parkCodes.includes(parkId)) {
+  //     setToggle(true);
+  //   }
+  //});
+
+  //     console.log(mappedParkCodes);
+  //   } catch {
+  //     console.log(error);
+  //   }
+  //};
+
+  //getParkCodes();
+
+  //console.log(parkCodes);
+  //   }, []);
 
   // useEffect(() => {
   //   FavoritesServices.getFavorites().then((response) => {
