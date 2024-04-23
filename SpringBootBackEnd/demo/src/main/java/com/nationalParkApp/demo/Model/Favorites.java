@@ -13,4 +13,9 @@ public class Favorites {
     private long id;
     private String parkCode;
     private UserEntity user;
+
+    public Favorites(long id, String parkCode) {
+        this.id = id;
+        this.parkCode = parkCode;
+    }
 }

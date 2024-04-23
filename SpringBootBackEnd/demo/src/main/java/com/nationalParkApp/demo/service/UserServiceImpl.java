@@ -1,10 +1,15 @@
 package com.nationalParkApp.demo.service;
 
+import com.nationalParkApp.demo.Model.Favorites;
 import com.nationalParkApp.demo.Model.User;
 import com.nationalParkApp.demo.Repository.UserRepository;
+import com.nationalParkApp.demo.entity.FavoritesEntity;
 import com.nationalParkApp.demo.entity.UserEntity;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -36,6 +41,5 @@ public class UserServiceImpl implements UserService{
         userEntity.setPassword(user.getPassword());
         return user;
     }
-
 
 }

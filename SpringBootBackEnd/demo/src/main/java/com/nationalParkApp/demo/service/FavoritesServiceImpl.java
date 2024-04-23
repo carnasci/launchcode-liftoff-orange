@@ -51,8 +51,7 @@ public class FavoritesServiceImpl implements FavoritesService {
 
         List<Favorites> favorites = favoritesEntities.stream().map(fav -> new Favorites(
                 fav.getId(),
-                fav.getParkCode(),
-                fav.getUser()))
+                fav.getParkCode()))
                 .collect(Collectors.toList());
         return favorites;
     }

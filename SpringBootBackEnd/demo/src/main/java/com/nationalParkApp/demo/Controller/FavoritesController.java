@@ -1,6 +1,7 @@
 package com.nationalParkApp.demo.Controller;
 
 import com.nationalParkApp.demo.Model.Favorites;
+import com.nationalParkApp.demo.Model.User;
 import com.nationalParkApp.demo.service.FavoritesService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,8 +36,9 @@ public class FavoritesController {
         return favoritesService.getAllFavorites();
     }
 
-    @GetMapping("/favorites/user")
-    public List<Favorites> getAllFavoritesByUserId(@RequestBody Long id) {
+    @GetMapping("/favorites/user/{id}")
+    public List<Favorites> getAllFavoritesByUserId(@PathVariable Long id) {
+
         return favoritesService.getAllByUserId(id);
     }
     @DeleteMapping("/favorites")

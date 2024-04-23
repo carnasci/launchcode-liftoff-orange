@@ -1,9 +1,12 @@
 package com.nationalParkApp.demo.Controller;
 
+import com.nationalParkApp.demo.Model.Favorites;
 import com.nationalParkApp.demo.Model.User;
 import com.nationalParkApp.demo.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController

@@ -13,7 +13,7 @@ class FavoritesServices {
   }
 
   getFavoritesByUserId(id) {
-    return axios.get(FAVORITES_BASE_API_URL + "/" + "user", id);
+    return axios.get(FAVORITES_BASE_API_URL + "/" + "user" + "/" + id);
   }
 }
 
