@@ -13,4 +13,10 @@ public class Review {
     private String parkCode;
     private String content;
     private UserEntity user;
+
+    public Review(long id, String parkCode, String content) {
+        this.id = id;
+        this.parkCode = parkCode;
+        this.content = content;
+    }
 }

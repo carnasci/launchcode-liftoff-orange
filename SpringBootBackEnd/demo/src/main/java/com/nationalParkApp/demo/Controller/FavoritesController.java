@@ -41,8 +41,8 @@ public class FavoritesController {
 
         return favoritesService.getAllByUserId(id);
     }
-    @DeleteMapping("/favorites")
-    public ResponseEntity<Object> deleteFavorite(@RequestBody Long id) {
+    @DeleteMapping("/favorites{id}")
+    public ResponseEntity<Object> deleteFavorite(@PathVariable Long id) {
         boolean deleted = false;
         deleted = favoritesService.deleteFromFavorites(id);
         Map<String, Boolean> response = new HashMap<>();

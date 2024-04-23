@@ -41,8 +41,7 @@ public class ItineraryServiceImpl implements ItineraryService {
                 iti.getId(),
                 iti.getStartDate(),
                 iti.getEndDate(),
-                iti.getParkCode(),
-                iti.getUser()))
+                iti.getParkCode()))
                 .collect(Collectors.toList());
         return itineraries;
     }
@@ -55,8 +54,7 @@ public class ItineraryServiceImpl implements ItineraryService {
                 iti.getId(),
                 iti.getStartDate(),
                 iti.getEndDate(),
-                iti.getParkCode(),
-                iti.getUser()))
+                iti.getParkCode()))
                 .collect(Collectors.toList());
         return itineraries;
     }

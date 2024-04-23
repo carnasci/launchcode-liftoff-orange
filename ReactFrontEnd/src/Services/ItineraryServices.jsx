@@ -12,11 +12,11 @@ class ItineraryServie {
   }
 
   getItinerariesByParkCode(parkCode) {
-    return axios.get(ITINERARY_API_BASE_URL + "/" + parkCode);
+    return axios.get(ITINERARY_API_BASE_URL + "/" + "parkcode" + parkCode);
   }
 
   getItinerariesByUserId(id) {
-    return axios.get(ITINERARY_API_BASE_URL, id);
+    return axios.get(ITINERARY_API_BASE_URL + "/" + "user" + id);
   }
 }
 

@@ -17,21 +17,4 @@ public interface FavoritesRepository extends JpaRepository<FavoritesEntity, Long
 
     public List<FavoritesEntity> findByUserId(Long id);
 
-    /*@Query(value = """
-            select park_code
-            from favorites
-            left join user_favorites
-            on user_favorites.favorites_id=favorites.id
-            where user_id =?1
-            """)
-    public List<FavoritesEntity> findByUserId(Long id);*/
-
-    /*@Query(value = "select id, park_code\n" +
-            "from favorites\n" +
-            "left join user_favorites\n" +
-            "on user_favorites.favorites_id=favorites.id\n" +
-            "where user_id =?1")
-    public List<FavoritesEntity> findByUserId(Long id);*/
-
-
 }

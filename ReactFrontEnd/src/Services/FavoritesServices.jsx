@@ -15,6 +15,10 @@ class FavoritesServices {
   getFavoritesByUserId(id) {
     return axios.get(FAVORITES_BASE_API_URL + "/" + "user" + "/" + id);
   }
+
+  deleteFavorites(id) {
+    return axios.delete(FAVORITES_BASE_API_URL + "/" + id);
+  }
 }
 
 export default new FavoritesServices();

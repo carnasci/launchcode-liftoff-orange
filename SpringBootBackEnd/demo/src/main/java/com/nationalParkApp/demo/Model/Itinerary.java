@@ -16,4 +16,11 @@ public class Itinerary {
     private Date endDate;
     private String parkCode;
     private UserEntity user;
+
+    public Itinerary(long id, Date startDate, Date endDate, String parkCode) {
+        this.id = id;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.parkCode = parkCode;
+    }
 }
