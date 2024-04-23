@@ -56,7 +56,7 @@ const CreateReview = () => {
       id: "",
       parkCode: parkDetails.parkCode,
       content: "",
-      userId: user,
+      user: user,
     });
   };
 
