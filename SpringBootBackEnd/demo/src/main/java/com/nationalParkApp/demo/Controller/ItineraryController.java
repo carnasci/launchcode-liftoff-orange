@@ -20,7 +20,7 @@ public class ItineraryController {
     }
 
     @PostMapping("/itinerary")
-    public Itinerary createItinerary(@RequestBody Itinerary itinerary) { return itineraryService.createItinerary(itinerary); }
+    public ResponseEntity createItinerary(@RequestBody Itinerary itinerary) { return itineraryService.createItinerary(itinerary); }
 
     @DeleteMapping(path = "/itinerary{id}")
     public ResponseEntity<Object> deleteItinerary(@PathVariable Long id) {

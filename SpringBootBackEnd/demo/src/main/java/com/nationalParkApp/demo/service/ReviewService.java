@@ -1,18 +1,18 @@
 package com.nationalParkApp.demo.service;
 
 import com.nationalParkApp.demo.Model.Review;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface ReviewService {
-    Review createReview(Review review);
+    ResponseEntity createReview(Review review);
 
-    List<Review> getAllReviews();
+    ResponseEntity<String> getAllReviews();
 
+    ResponseEntity<String> getAllReviewsByParkCode(String parkCode);
 
-    List<Review> getAllReviewsByParkCode(String parkCode);
-
-    List<Review> getAllReviewsByUserId(Long id);
+    ResponseEntity<String> getAllReviewsByUserId(Long id);
 
     boolean deleteReview(Long id);
 

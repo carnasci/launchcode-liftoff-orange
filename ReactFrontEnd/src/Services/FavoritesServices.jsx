@@ -1,18 +1,37 @@
 import React from "react";
 import axios from "axios";
 
-const FAVORITES_BASE_API_URL = "http://localhost:8080/api/v1/favorites";
+const FAVORITES_API_BASE_URL = "http://localhost:8080/api/v1/favorites";
+
+//const FAVORITES_API_LIST_URL = "http://localhost:8080/api/v1/addFavorites";
+
+
+
+
+
 
 class FavoritesServices {
-  createFavorite(favorites) {
-    return axios.post(FAVORITES_BASE_API_URL, favorites);
+  createFavorite(favorite,instance) {
+    if (window.localStorage.getItem("Auth")) {
+      instance.defaults.headers["Authorization"] = window.localStorage.getItem("Auth");
+      instance.post('/addFavorites',favorite)
+      .then((response) => {
+      if(response.status === 201) {
+        const user = JSON.parse(window.localStorage.getItem("User"));
+        user.favorites.push(response.data);
+        const stringedUser = JSON.stringify(user);
+        window.localStorage.setItem("User", stringedUser);
+
+      }})
+    }
   }
 
-  getFavorites() {
+  
+  getFavorites(instance) {
     return axios.get(FAVORITES_BASE_API_URL);
   }
 
-  getFavoritesByUserId(id) {
+  getFavoritesByUserId(id, instance) {
     return axios.get(FAVORITES_BASE_API_URL + "/" + "user" + "/" + id);
   }
 
