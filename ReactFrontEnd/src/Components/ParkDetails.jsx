@@ -30,7 +30,7 @@ function ParkDetails() {
   const [favorites, setFavorites] = useState({
     id: "",
     parkCode: parkId,
-    user: currentUser
+    user: currentUser,
   });
   const parkIdChecker = (parkId, currentUser) => {
     const favoritesList = currentUser.favorites.map((data) => data.parkCode);
@@ -44,7 +44,7 @@ function ParkDetails() {
       setToggle(true);
     }
   }, []);
-  
+
   const Favorite_API_BASE_URL = "http://localhost:8080/api/v1";
   const axiosInstance = axios.create({
     withCredentials: true,
@@ -56,8 +56,8 @@ function ParkDetails() {
       "Access-Control-Allow-Origin": "http://localhost:5173",
       "Access-Control-Allow-Methods": "POST",
       "Access-Control-Allow-Headers":
-      "Content-Type, Authorization, X-Requested-With",
-      "Authorization": null
+        "Content-Type, Authorization, X-Requested-With",
+      Authorization: null,
     },
   });
   //This useEffect gets user favorited park codes and checks if searched for park is already favorited//
@@ -76,9 +76,8 @@ function ParkDetails() {
   const saveToFavorites = () => {
     setFavorites({ ...favorites, parkCode: parkId, user: currentUser });
     setToggle(true);
-    FavoritesServices.createFavorite(favorites,axiosInstance);
-    console.log(parkIdChecker(parkId,currentUser));
-      
+    FavoritesServices.createFavorite(favorites, axiosInstance);
+    console.log(parkIdChecker(parkId, currentUser));
   };
 
   // //below uses react query to make an API call, which is then accessible to review & itinerary pages via (['singlePark'])
@@ -94,30 +93,6 @@ function ParkDetails() {
 
   if (error) return <div>There was an error</div>;
   if (isLoading) return <div>DATA IS LOADING...</div>;
-
-  //#############################
-  //WORKING WITH FRESH API CALLS
-
-  // useEffect(() => {
-  //     getSinglePark();
-  // }, [])
-
-  // const getSinglePark = async () => {
-  //     try {
-  //         const response = await axios.get("https://developer.nps.gov/api/v1/parks?parkCode="+parkId+"&api_key=Wrk46hd2qqrRis6VpJA8CT12EeDczzGa9dYRBjYk")
-  // .then(response => {
-  // axios.get(getParkInfoURL+parkCode+"&api_key="+api_key).then((response) => {
-  // setPark(response.data.data[0])
-  // setPark(response.data.data)
-  // console.log(singlePark)
-  // setPark(response.data.data[0])
-  // console.log("singlePark is: " + singlePark)
-  // });
-  //     } catch (error) {
-  //         console.log("Error: ", error)
-  //     }
-  // }
-  //###############################
 
   //###############################
   //Working, turned off for testing
