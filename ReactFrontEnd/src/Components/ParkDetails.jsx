@@ -2,23 +2,21 @@ import React, { useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import Header from './Header';
-import Footer from './Footer';
-import { useGlobalContext } from '../context';
-import { Carousel } from 'flowbite-react';
-import {useQuery, useQueryClient} from '@tanstack/react-query';
-import { Link } from 'react-router-dom';
+import Footer from "./Footer";
+import { Carousel } from "flowbite-react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import FavoritesServices from '../Services/FavoritesServices';
+import FavoritesServices from "../Services/FavoritesServices";
 
-const getParkInfoURL="https://developer.nps.gov/api/v1/parks?parkCode="
-const api_key=import.meta.env.VITE_REACT_APP_NPS_API_KEY;
+const getParkInfoURL = "https://developer.nps.gov/api/v1/parks?parkCode=";
+const api_key = import.meta.env.VITE_REACT_APP_NPS_API_KEY;
 
 function ParkDetails() {
   const [singlePark, setPark] = useState([]);
   const [toggle, setToggle] = useState(false);
   const { parkCode } = useParams();
-  // const { searches } = useGlobalContext();
   const mapRef = useRef();
 
   //this sets parkId equal to the parkcode at then end of the current url
